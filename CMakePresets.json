@@ -1,0 +1,35 @@
+{
+    "version": 5,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 24,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "NinjaMulti",
+            "displayName": "Ninja MultiConfig",
+            "description": "Ninja MultiConfig",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "NinjaDebug",
+            "displayName": "Ninja MultiConfig Debug",
+            "description": "Ninja MultiConfig Debug",
+            "configurePreset": "NinjaMulti",
+            "configuration": "Debug",
+            "jobs": 16
+        },
+        {
+            "name": "NinjaRelease",
+            "displayName": "Ninja MultiConfig Release",
+            "description": "Ninja MultiConfig Release",
+            "configurePreset": "NinjaMulti",
+            "configuration": "Release",
+            "jobs": 16
+        }
+    ]
+}
