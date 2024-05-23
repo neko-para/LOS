@@ -14,8 +14,17 @@ set(CMAKE_SYSTEM_PROCESSOR i386)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 
-set(CMAKE_C_FLAGS "-target i386-elf -m32 -ffreestanding -fno-builtin")
-set(CMAKE_CXX_FLAGS "-target i386-elf -m32 -ffreestanding -fno-builtin -fno-exceptions -fno-rtti")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "")
+
+set(CMAKE_CXX_STANDARD_LIBRARIES "")
+set(CMAKE_C_STANDARD_LIBRARIES "")
+
+set(CMAKE_C_FLAGS
+    "-target i386-elf -m32 -ffreestanding -nostdlib -nodefaultlibs -fno-builtin"
+)
+set(CMAKE_CXX_FLAGS
+    "-target i386-elf -m32 -ffreestanding -nostdlib -nodefaultlibs -fno-builtin -fno-exceptions -fno-rtti"
+)
 set(CMAKE_ASM_FLAGS "-target i386-elf -m32")
 
 add_library(kernel STATIC src/kernel.cpp src/boot.s)
@@ -31,12 +40,10 @@ add_custom_command(
   OUTPUT ${K_OUTPUT}
   COMMAND ${K_LINKER} ${K_LINK_FLAGS_LIST} -o ${K_OUTPUT} $<TARGET_FILE:kernel>
   DEPENDS kernel
-  COMMENT "Linking ${K_OUTPUT}"
-)
+  COMMENT "Linking ${K_OUTPUT}")
 
 # 添加自定义目标
 add_custom_target(
   kernel_image ALL
   DEPENDS ${K_OUTPUT}
-  COMMENT "Building kernel"
-)
+  COMMENT "Building kernel")
