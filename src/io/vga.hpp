@@ -49,9 +49,7 @@ inline int row = 0;
 inline int col = 0;
 inline attr_t attr = make(color_t::light_grey, color_t::black);
 
-inline void fill(entry_t e) {
-  ::los::fill(buffer, buffer + width * height, e);
-}
+inline void fill(entry_t e) { ::los::fill(buffer, buffer + width * height, e); }
 
 inline void put(char ch) {
   if (ch == '\n') {
@@ -71,7 +69,7 @@ inline void put(char ch) {
   }
 }
 
-inline void write(const char* str) {
+inline void write(const char *str) {
   while (*str) {
     put(*str);
     str++;

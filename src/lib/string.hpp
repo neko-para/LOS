@@ -4,7 +4,7 @@
 
 namespace los {
 
-constexpr inline size_t strlen(const char* str) {
+constexpr inline size_t strlen(const char *str) {
   size_t len = 0;
   while (*str++) {
     len++;
@@ -12,4 +12,4 @@ constexpr inline size_t strlen(const char* str) {
   return len;
 }
 
-}
+} // namespace los
