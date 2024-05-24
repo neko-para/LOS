@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-namespace los::tss {
+namespace los::gdt {
 
 struct tss_t {
   uint16_t link;
@@ -47,4 +47,4 @@ struct tss_t {
 
 inline tss_t sys_tss;
 
-} // namespace los::tss
+} // namespace los::gdt

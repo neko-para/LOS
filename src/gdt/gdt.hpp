@@ -32,20 +32,20 @@ struct gdt_t {
 
   static void init();
 
-  void setbase(uint32_t base) {
+  void set_base(uint32_t base) {
     base_lo = base & 0xFFFF;
     base_mi = (base >> 16) & 0xFF;
     base_hi = (base >> 24) & 0xFF;
   }
 
-  void setlimit(uint32_t limit) {
+  void set_limit(uint32_t limit) {
     limit_lo = limit & 0xFFFF;
     limit_hi = (limit >> 16) & 0xF;
   }
 
   void set(uint32_t base, uint32_t limit, uint8_t access, uint8_t flag) {
-    setbase(base);
-    setlimit(limit);
+    set_base(base);
+    set_limit(limit);
     this->access = access;
     this->flag = flag;
   }

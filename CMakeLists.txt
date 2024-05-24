@@ -27,7 +27,8 @@ set(CMAKE_CXX_FLAGS
 )
 set(CMAKE_ASM_FLAGS "-target i386-elf -m32")
 
-add_library(kernel STATIC src/kernel.cpp src/boot.s src/boot/gdt.s)
+add_library(kernel STATIC src/kernel.cpp src/boot.s src/gdt/gdt.s
+                          src/memory/new.cpp)
 
 set(K_LINKER ld.lld)
 set(K_LINK_FLAGS "-m elf_i386 -nostdlib -T ${CMAKE_SOURCE_DIR}/src/kernel.ld")
